@@ -1,16 +1,17 @@
 CC = gcc
 CFLAGS = -std=c99 -W -Wall -ansi -pedantic
-LDFLAGS =
+LDFLAGS = -I includes/
 BIN = todolist
-SRC = $(wildcard *.c)
+SRC = $(wildcard src/*.c)
 OBJ = $(SRC:.c=.o)
 
 all: $(BIN)
 
-$(BIN): $(OBJ)
+$(BIN): $(OBJ) main.o
 	$(CC) -o $(BIN) $^ $(LDFLAGS)
 
-main.o: user.h
+main.o: main.c includes/user.h
+	$(CC) -o $@ -c $< $(LDFLAGS)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)

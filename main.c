@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "user.h"
+#include "menu.h"
 
 int main() {
-    char* input = ask_user("Hello, please enter something\n");
-    printf(input);
-    free(input);
+    file_menu();
     return EXIT_SUCCESS;
 }
